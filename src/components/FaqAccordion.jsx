@@ -1,5 +1,8 @@
+// faq accordion component
+// displays a list of questions that can expand/collapse to reveal answers
 import { useState, useRef } from 'react';
 
+// faq data array
 const faqs = [
   {
     question: 'Is Herself Health a primary care provider?',
@@ -26,13 +29,17 @@ const faqs = [
     answer:
       'You’ll pay $65/month or $700/year. We bill monthly or annually at a discount. That covers your membership and everything listed.',
   },
-  // add more FAQ items here
+  // more faq items can be added here
 ];
 
 export default function FaqAccordion() {
+  // array of currently open faq indices
   const [openIndices, setOpenIndices] = useState([]);
+
+  // ref array to measure content height for smooth expand/collapse
   const panelRefs = useRef([]);
 
+  // toggle faq open/close state
   const toggleFAQ = (index) => {
     setOpenIndices(
       (prev) =>
@@ -46,11 +53,10 @@ export default function FaqAccordion() {
     <div className="space-y-[25px] md:mt-[72px]">
       {faqs.map((faq, index) => {
         const isOpen = openIndices.includes(index);
-        const panelRef = panelRefs.current[index];
 
         return (
-          <div key={index} className="border-[2px] border-[#9A0180] rounded-[10px] overflow-hidden">
-            {/* Question row */}
+          <div key={index} className="border-[2px] border-pink rounded-[10px] overflow-hidden">
+            {/* question row */}
             <button
               onClick={() => toggleFAQ(index)}
               className="w-full flex items-center justify-between px-[20px] py-[15px] gap-[14px] text-left"
@@ -69,7 +75,7 @@ export default function FaqAccordion() {
               </div>
             </button>
 
-            {/* Answer */}
+            {/* answer panel */}
             <div
               ref={(el) => (panelRefs.current[index] = el)}
               className="px-[20px] text-[16px] text-gray-700 overflow-hidden transition-all duration-700 ease-in-out"

@@ -1,15 +1,23 @@
+// waiting list form component
+// handles user input, submission, and displays a temporary success message
 import { useState, useEffect, useRef } from 'react';
 
 export default function WaitingListForm() {
+  // form state
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
     email: '',
     phone: '',
   });
+
+  // submission state
   const [submitted, setSubmitted] = useState(false);
+
+  // ref to hold the timeout ID for clearing
   const timerRef = useRef(null);
 
+  // form field definitions for easier mapping
   const fields = [
     {
       id: 'firstname',
@@ -41,43 +49,46 @@ export default function WaitingListForm() {
     },
   ];
 
+  // update form state on input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
 
     setSubmitted(true);
 
-    // Clear previous timer if exists
+    // clear any existing timer
     if (timerRef.current) clearTimeout(timerRef.current);
 
-    // After 5 seconds, hide success and reset form
+    // reset form and hide success message after 5 seconds
     timerRef.current = setTimeout(() => {
       setSubmitted(false);
       setFormData({ firstname: '', lastname: '', email: '', phone: '' });
     }, 5000);
   };
 
-  // Cleanup timer on unmount
+  // cleanup timer on component unmount
   useEffect(() => {
     return () => clearTimeout(timerRef.current);
   }, []);
 
   return (
     <div className="relative flex items-center justify-center md:justify-start">
-      {/* Success message */}
+      {/* success message overlay */}
       <div
-        className={`absolute transition-opacity duration-700 ease-in-out font-untitled text-[24px] text-darkPink text-lg font-medium mb-3 xl:text-[30px] xl:leading-tight text-center ${
-          submitted ? 'opacity-100' : 'opacity-0'
-        }`}
+        className={`absolute transition-opacity duration-700 ease-in-out font-untitled text-[24px] 
+                    text-darkPink text-lg font-medium mb-3 xl:text-[30px] xl:leading-tight text-center ${
+                      submitted ? 'opacity-100' : 'opacity-0'
+                    }`}
       >
         Thank you! Your form has been submitted.
       </div>
 
-      {/* Form */}
+      {/* form container */}
       <form
         onSubmit={handleSubmit}
         className={`w-full transition-opacity duration-700 ease-in-out ${
@@ -86,19 +97,22 @@ export default function WaitingListForm() {
       >
         {fields.map(({ id, label, type, placeholder, autoComplete }) => (
           <div key={id}>
+            {/* input label */}
             <label
               htmlFor={id}
               className="font-untitled font-normal text-[18px] text-black block mb-1"
             >
               {label}
             </label>
+
+            {/* input field */}
             <input
               id={id}
               name={id}
               type={type}
               placeholder={placeholder}
               autoComplete={autoComplete}
-              className="border border-darkPink px-[10px] py-[8px] rounded-[5px] mb-4 w-full font-untitled font-normal text-[18px] placeholder:text-[#9A0180]"
+              className="border border-darkPink px-[10px] py-[8px] rounded-[5px] mb-4 w-full font-untitled font-normal text-[18px] placeholder:text-pink"
               value={formData[id]}
               onChange={handleChange}
               required
@@ -106,9 +120,10 @@ export default function WaitingListForm() {
           </div>
         ))}
 
+        {/* submit button */}
         <button
           type="submit"
-          className="bg-[#8755F1] text-white p-[10px] rounded-[10px] w-full mt-2 md:col-span-2"
+          className="bg-purple text-white p-[10px] rounded-[10px] w-full mt-2 md:col-span-2"
         >
           Submit
         </button>
