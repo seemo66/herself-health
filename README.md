@@ -39,6 +39,19 @@ npm run build
 
 This generates a build folder with minified, production-ready assets. You can serve these files with any static hosting provider or integrate them into your existing deployment process.
 
+## Waiting List Form
+
+The `WaitingListForm` component provides a basic front-end form for users to join the waitlist. **Important notes:**
+
+- The current implementation only handles front-end submission and displays a temporary success message.
+- A **backend solution** is required to actually store or process submitted form data (e.g., via an API or serverless function).
+- Additional configuration may be needed for:
+  - Validating input fields.
+  - Displaying error messages for invalid or failed submissions.
+  - Integrating with email services, databases, or CRM systems.
+
+This allows flexibility to connect the form to your preferred backend or service as needed.
+
 ## Future Configurability
 
 Currently, the components (e.g., `HeroSection`, `MembershipSection`, `WaitingListSection`, `FaqSection`) use hardcoded content and images. In the next stage of development, these components could be refactored to accept **props** for all textual content, images, and call-to-action links. This would allow:
