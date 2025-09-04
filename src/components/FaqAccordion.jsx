@@ -57,7 +57,7 @@ export default function FaqAccordion() {
             >
               <div className="flex items-center gap-[14px]">
                 <img
-                  src="/images/arrow-right.svg"
+                  src={`${process.env.PUBLIC_URL}/images/arrow-right.svg`}
                   alt="Arrow"
                   className={`w-[22px] h-[22px] transform transition-transform duration-700 ${
                     isOpen ? 'rotate-90' : ''

@@ -2,10 +2,13 @@ export default function ServicesSection() {
   return (
     <section className="bg-white px-[30px] py-[40px] flex flex-col gap-[40px] lg:flex-row-reverse lg:gap-[54px] lg:py-[74px] lg:items-center lg:justify-center">
       <picture className="block aspect-[1.34] md:aspect-auto">
-        <source srcSet="/images/services-desktop.webp" media="(min-width: 768px)" />
+        <source
+          srcSet={`${process.env.PUBLIC_URL}/images/services-desktop.webp`}
+          media="(min-width: 768px)"
+        />
         <img
           className="w-full h-full object-cover rounded-[10px] lg:max-w-[643px]"
-          src="/images/services-desktop.webp"
+          src={`${process.env.PUBLIC_URL}/images/services-mobile.webp`}
           alt="A nurse assists an older woman as they both focus on a tablet, likely reviewing medical information or resources."
         />
       </picture>

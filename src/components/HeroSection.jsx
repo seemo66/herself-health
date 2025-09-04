@@ -5,10 +5,13 @@ export default function HeroSection() {
       <div className="relative w-full">
         <picture>
           {/* Desktop source with a media query */}
-          <source srcSet="/images/hero-desktop.webp" media="(min-width: 768px)" />
+          <source
+            srcSet={`${process.env.PUBLIC_URL}/images/hero-desktop.webp`}
+            media="(min-width: 768px)"
+          />
           {/* Mobile source (default) */}
           <img
-            src="/images/hero-mobile.webp"
+            src={`${process.env.PUBLIC_URL}/images/hero-mobile.webp`}
             alt="A woman and a child are happily smiling in a park, with lush greenery and a clear blue sky in the background."
             className="block w-full md:min-h-[525px] object-cover"
           />

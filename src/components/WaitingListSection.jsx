@@ -15,10 +15,13 @@ export default function WaitingListSection() {
         <div className="w-full">
           <picture>
             {/* Desktop source with a media query */}
-            <source srcSet="/images/waitlist-desktop.webp" media="(min-width: 768px)" />
+            <source
+              srcSet={`${process.env.PUBLIC_URL}/images/waitlist-desktop.webp`}
+              media="(min-width: 768px)"
+            />
             {/* Mobile source (default) */}
             <img
-              src="/images/waitlist-mobile.webp"
+              src={`${process.env.PUBLIC_URL}/images/waitlist-mobile.webp`}
               alt="A woman wearing glasses stands in front of a closed door, looking directly at the camera"
               className="block w-full md:min-h-[694px] object-cover"
             />

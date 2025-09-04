@@ -11,17 +11,6 @@ export default function FaqSection() {
           Frequently Asked Questions
         </p>
         <FaqAccordion />
-        {/* <div className="px-[20px] py-[15px] border-[2px] border-[#9A0180] rounded-[10px] flex items-center gap-[14px]">
-          <img
-            src="/images/arrow-right.svg"
-            alt="Arrow pointing right"
-            className="w-[22px] h-[22px]"
-          />
-
-          <p className="font-untitled font-medium text-[20px] text-black leading-6">
-            Is Herself Health a primary care provider?
-          </p>
-        </div> */}
       </div>
     </section>
   );

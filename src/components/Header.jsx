@@ -7,7 +7,11 @@ export default function Header() {
     >
       <div className="w-full mx-auto flex items-center justify-center lg:justify-start lg:ml-[100px]">
         <a href="/" aria-label="Herself Health home" className="flex items-center">
-          <img src="/images/logo-pink.svg" alt="Herself Health logo" className="h-auto w-auto" />
+          <img
+            src={`${process.env.PUBLIC_URL}/images/logo-pink.svg`}
+            alt="Herself Health logo"
+            className="h-auto w-auto"
+          />
           <span className="sr-only">Herself Health</span>
         </a>
       </div>
